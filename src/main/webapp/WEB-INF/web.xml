@@ -1,7 +1,138 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>myServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.myServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>regsterServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.RegsterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>messageServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.MessageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCheckServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.addCheckServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>indexServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.IndexServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>nextServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.NextServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>findConditionServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.FindConditionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>newServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>nameServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.NameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>findServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.studentCheckWeb.servlet.FindServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>testServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.TestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>com.lovo.service.web.testWeb.UploadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/file</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>findServlet</servlet-name>
+        <url-pattern>/findServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>nameServlet</servlet-name>
+        <url-pattern>/nameServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>newServlet</servlet-name>
+        <url-pattern>/newServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>findConditionServlet</servlet-name>
+        <url-pattern>/findConditionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>nextServlet</servlet-name>
+        <url-pattern>/nextServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>indexServlet</servlet-name>
+        <url-pattern>/indexServlet.lovo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCheckServlet</servlet-name>
+        <url-pattern>/addCheckServlet.lovo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>messageServlet</servlet-name>
+        <url-pattern>/messageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>regsterServlet</servlet-name>
+        <url-pattern>/regsterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>myServlet</servlet-name>
+        <url-pattern>/myServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--过滤器-->
+    <!--<filter>-->
+        <!--<filter-name>myFilter</filter-name>-->
+        <!--<filter-class>com.lovo.service.mybaits.studentCheck.filter.MyFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>encoding</param-name>-->
+            <!--<param-value>UTF-8</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>myFilter</filter-name>-->
+        <!--<url-pattern>*.lovo</url-pattern>-->
+    <!--</filter-mapping>-->
+
 </web-app>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.service.mybaits.studentCheck.dao.IStudentCheckDao">
+    <resultMap id="studentMapId" type="tStudent">
+        <id column="student_id" property="studentId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="student_name" property="studentName"></result>
+    </resultMap>
+    <resultMap id="checkMapId" type="tCheck">
+        <id column="check_id" property="checkId"></id>
+        <result column="check_type" property="checkType"></result>
+        <result column="check_status" property="checkStatus"></result>
+        <result column="check_date" property="checkDate"></result>
+        <result column="check_person" property="checkPerson"></result>
+        <association property="student" column="student_id" select="findStudentByStudentId" ></association>
+    </resultMap>
+    <sql id="itemId">
+        <where>
+            c.student_id=s.student_id
+            <if test="studentName!=null and studentName!=''">
+                and s.student_name like concat('%',#{studentName},'%')
+            </if>
+            <if test="checkType!=null and checkType!=''">
+                and check_type = #{checkType}
+            </if>
+            <if test="checkStartDate!=null and checkStartDate!=''">
+                and check_date &gt;= #{checkStartDate}
+            </if>
+            <if test="checkEndDate!=null  and checkEndDate!=''">
+                and check_date &lt;= #{checkEndDate}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="addCheck" parameterType="tCheck">
+        INSERT INTO t_check(student_id,check_type,check_status,check_date,check_person)
+        VALUES(#{student.studentId},#{checkType},#{checkStatus},#{checkDate},#{checkPerson})
+    </insert>
+    <select id="findCheckItem" resultMap="checkMapId" parameterType="map">
+          select c.* from t_check c,t_student s <include refid="itemId"></include> limit #{startPage},#{countPage}
+    </select>
+    <select id="getCheckListPageNum" parameterType="map" resultType="int" >
+        select count(c.check_id) from t_check c,t_student s <include refid="itemId"></include>
+    </select>
+
+    <select id="findStudentByStudentName" resultMap="studentMapId">
+          SELECT * FROM t_student WHERE student_name=#{0}
+    </select>
+    <select id="findStudentByStudentId" resultMap="studentMapId">
+          SELECT DISTINCT s.* FROM t_student s,t_check c WHERE s.student_id=c.student_id AND c.student_id=#{0}
+    </select>
+    <select id="login" resultMap="studentMapId">
+         select * from t_student where user_name=#{0} and user_pwd=#{1}
+    </select>
+    <insert id="regster" parameterType="tStudent">
+        INSERT INTO t_student(user_name,user_pwd,student_name) VALUES(#{userName},#{userPwd},#{studentName})
+    </insert>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.service.mybaits.test5_30.dao.IStudentDao">
+    <resultMap id="studentMapId" type="studentSystem">
+        <id column="id" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="pass" property="pass"></result>
+        <result column="age" property="age"></result>
+        <result column="grade" property="grade"></result>
+    </resultMap>
+    <sql id="studentSql">
+         id,userName,pass,age,grade
+     </sql>
+    <insert id="insertStudent"  useGeneratedKeys="true" keyProperty="id" parameterType="studentSystem">
+        insert into studentTable(userName,pass,age,grade)values
+        (#{userName},#{pass},#{age},#{grade})
+    </insert>
+    <select id="login" resultMap="studentMapId" >
+        select * from studentTable where userName=#{0}
+         and pass=#{1}
+    </select>
+    <select id="findStudentByName" resultMap="studentMapId" >
+        select * from studentTable where
+         userName like concat("%",#{0},"%")
+    </select>
+    <select id="findAllStudent" resultMap="studentMapId" >
+        select * from studentTable
+    </select>
+</mapper>

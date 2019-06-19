@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.service.tImg.IImgDao">
+    <resultMap id="imgMap" type="tImg">
+        <id column="img_id" property="imgId"></id>
+        <result column="img_name" property="imgName"></result>
+    </resultMap>
+    <insert id="addImg" parameterType="tImg">
+        INSERT INTO t_img(img_name)VALUES(#{0})
+    </insert>
+</mapper>

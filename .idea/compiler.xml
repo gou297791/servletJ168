@@ -9,5 +9,8 @@
         <module name="servletJ168" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="servletWeb" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

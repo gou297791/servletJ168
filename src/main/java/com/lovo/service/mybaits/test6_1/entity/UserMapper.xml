@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.service.mybaits.test6_1.dao.IUser">
+    <insert id="addUser" parameterType="TUser">
+        insert into t_user(u_id, r_id, u_name, u_pwdword)values
+        (#{uId},#{rId},#{uName},#{uPwdword})
+    </insert>
+    <select id="login" resultType="tUser">
+        select u_id uId,u_name uName,u_pwdword uPwdword from t_user where u_name=#{0} and u_pwdword=#{1}
+    </select>
+</mapper>

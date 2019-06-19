@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovo.service.mybaits.test6_1.dao.IRole">
+    <resultMap id="roleMapId" type="TRole">
+    <id column="r_id" property="rId"></id>
+    <result column="r_name" property="rName"></result>
+    <!--<association property="TUser" column="u_name" select="findUserByUName" ></association>-->
+    <!--<association property="TJurisdiction" column="j_name" select="findJurisdictionByJName" ></association>-->
+    <collection property="userList" column="r_id" ofType="tUser" >
+        <id property="uId" column="u_id"></id>
+        <result property="uName" column="u_name"></result>
+        <result property="uPwdword" column="u_pwdword"></result>
+    </collection>
+        <!--多对多返回ofType,一对多返回javaType-->
+        <!--<collection property="" column="" ofType="" ></collection>-->
+    <!--<association property="tUser" column="u_name" javaType="tUser">-->
+        <!--<id column="u_id" property="uId"></id>-->
+        <!--<result column="r_id" property="rId"></result>-->
+        <!--<result column="u_name" property="uName"></result>-->
+        <!--<result column="u_pwdword" property="uPwdword"></result>-->
+    <!--</association>-->
+    </resultMap>
+    <select id="findUserListByRoleId" resultMap="roleMapId">
+          select r.r_id,u.u_id,u.u_name, u.u_pwdword from t_role r left join t_user u on r.r_id=u.r_id where r.r_id=#{0}
+    </select>
+    <select id="findJurisdictionByJName" resultType="TJurisdiction">
+         select j_id jId,r_id rId,j_name jName,j_url jUrl from t_jurisdiction where j_name=#{0}
+    </select>
+    <select id="findRoleByJurisdictionName" resultMap="roleMapId">
+        select r.* from t_jurisdiction j left join t_role r on j.r_id=r.r_id where j.j_name=#{0}
+    </select>
+    <select id="findUserByUName" resultType="TUser">
+         select u_id uId,r_id rId,u_name uName,u_pwdword uPwdword from t_user where u_name=#{0}
+    </select>
+    <select id="findRoleByUserName" resultMap="roleMapId">
+        select r.* from t_user u left join t_role r on u.r_id=r.r_id where u.u_name=#{0}
+    </select>
+    <insert id="addRole" parameterType="TRole">
+        insert into t_role(r_id, r_name)values(#{rId},#{rName})
+    </insert>
+</mapper>

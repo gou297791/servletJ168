@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+    <select id="selectUser" resultType="com.lovo.service.mybaits.test5_30.entity.UserEntity" >
+        select id id,userName userName,pass pass,age age from userTable
+    </select>
+    <resultMap id="userMapId" type="userEntity">
+        <id column="id" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="pass" property="pass"></result>
+        <result column="age" property="age"></result>
+    </resultMap>
+    <sql id="userSql">
+         id,userName,pass,age
+     </sql>
+    <select id="selectUser2" resultMap="userMapId" >
+        select id,userName,pass,age from userTable
+    </select>
+    <select id="selectUser3" resultMap="userMapId" >
+        select <include refid="userSql"></include> from userTable
+    </select>
+</mapper>

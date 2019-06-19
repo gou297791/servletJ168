@@ -7,7 +7,7 @@
   <artifactId>servletJ168</artifactId><!--指定工程名例如：app -->
   <packaging>war</packaging><!--The current core packaging values are: pom,
 		jar, maven-plugin, ejb, war, ear, rar, par -->
-  <version>0.0.1-SNAPSHOT</version><!--指定版本号 -->
+  <version>0.0.1-SNAPSHOT</version>
   <name>ssh</name><!--一些无关太重要的东西，用户描述你的项目的名字,可选的 -->
   <url>http://maven.apache.org</url><!--暂时不知何物，貌似无关重要，只是写明开发团队的网站，可选的 -->
   <description></description> <!-- project的描述 -->
